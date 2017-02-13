@@ -36,38 +36,39 @@ class InputController{
 	}
 	
 	public static function keyDownHandler(ke:KeyboardEvent):Void{
-		switch(ke.keyCode) {
-			case keyUp:
-				inputUp = true;
-			case keyRight:
-				inputRight = true;
-			case keyDown:
-				inputDown = true;
-			case keyLeft:
-				inputLeft = true;
-			case keySelect:
-				inputSelect = true;
-			case keyCancel:
-				inputCancel = true;
-		}
+		var kc:Int = ke.keyCode;
+		
+		// I wish switch worked here, but switch only accepts constants
+		if (kc == keySelect)
+			inputSelect = true;
+		else if (kc == keyCancel)
+			inputCancel = true;
+		else if (kc == keyUp)
+			inputUp = true;
+		else if (kc == keyRight)
+			inputRight = true;
+		else if (kc == keyDown)
+			inputDown = true;
+		else if (kc == keyLeft)
+			inputLeft = true;
 	}
 	
-	public function keyUpHandler(ke:KeyboardEvent):Void{
-		switch(ke.keyCode) {
-			case keyUp:
-				inputUp = false;
-			case keyRight:
-				inputRight = false;
-			case keyDown:
-				inputDown = false;
-			case keyLeft:
-				inputLeft = false;
-			case keySelect:
-				inputSelect = false;
-			case keyCancel:
-				inputCancel = false;
-		}
+	public static function keyUpHandler(ke:KeyboardEvent):Void{
+		var kc:Int = ke.keyCode;
 		
+		// I wish switch worked here, but switch only accepts constants
+		if (kc == keySelect)
+			inputSelect = false;
+		else if (kc == keyCancel)
+			inputCancel = false;
+		else if (kc == keyUp)
+			inputUp = false;
+		else if (kc == keyRight)
+			inputRight = false;
+		else if (kc == keyDown)
+			inputDown = false;
+		else if (kc == keyLeft)
+			inputLeft = false;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package ctp.haxerpg.menu;
 
 import openfl.display.Sprite;
+import src.ctp.haxerpg.menu.Menu;
 
 /**
  * ...
@@ -26,11 +27,19 @@ class MenuButton {
 	// Current State - Controls sub displays, calls actions
 	public var currentState:Int;
 	
+	// Actions
+	public function actionIdle:Action;
+	public function actionHover:Action;
+	public function actionSelected:Action;
+	public function actionInactive:Action;
+	public function actionCancel:Action;
+	
+	
 	// Keyboard/Controller Nav for Menu Items
-	public var navTop:Sprite;
-	public var navRight:Sprite;
-	public var navBottom:Sprite;
-	public var navLeft:Sprite;
+	public var navTop:MenuButton;
+	public var navRight:MenuButton;
+	public var navBottom:MenuButton;
+	public var navLeft:MenuButton;
 
 	public function new() {
 		display = new Sprite();
@@ -43,32 +52,23 @@ class MenuButton {
 			displaySub = Null;
 		}
 		
-		switch (newState) {
-			case IDLE:
+		// No, switch doesn't work here in haxe
+		if (newState == IDLE) {
 				display.addChild(displaySub = displayIdle);
-				actionIdle();
-			case HOVER:
+				actionIdle.fire();
+		} else if(newstate == HOVER) {
 				dispaly.addChild(displaySub = displayHover);
-				actionHover();
-			case SELECTED:
+				actionHover.fire();
+		} else if(newstate == SELECTED) {
 				display.addChild(displaySub = displaySelected);
-				actionSelected();
-			case INACTIVE:
+				actionSelected.fire();
+		} else if(newstate == INACTIVE) {
 				display.addChild(displaySub = displayInactive);
-				actionInactive();
+				actionInactive.fire();
 		}
 		
 		currentState = newState;
 		
 	}
-	
-	// Graphic Actions
-	public function actionIdle():Void{}
-	public function actionHover():Void{}
-	public function actionSelected():Void{}
-	public function actionInactive():Void{}
-	
-	// Non Graphic Actions
-	public function actionCancel():Void
 	
 }
