@@ -5,17 +5,18 @@ import openfl.Lib;
 
 /**
  * ...
- * @author Garrett "caboosetp" Robertson
+ * @author Garrett 'caboosetp' Robertson
  */
+
+// Assets:
+// openfl.Assets.getBitmapData("img/assetname.jpg");
+ 
 class Main extends Sprite {
 
 	public function new() {
 		super();
 		
-		// Assets:
-		// openfl.Assets.getBitmapData("img/assetname.jpg");
-		
-		
+		InputController.hookKeyboard(this);
 		
 	}
 
